@@ -1,2 +1,2 @@
-# icsystem.dashboard
-Dashboard for icsystem service
+# shareview.dashboard
+Dashboard for shareview service
