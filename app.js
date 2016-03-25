@@ -18,6 +18,7 @@ Ext.application({
         'Admin.view.main.Viewport',
         'Admin.view.profile.Profile',
         'Admin.view.payment.Payment',
+        'Admin.view.referrals.Referrals',
         'Admin.view.pages.BlankPage',
         'Admin.view.pages.Error404Window'
     ],

@@ -31,9 +31,14 @@ Ext.define('Admin.view.profile.ProfileController', {
         });
 
         Ext.create('Ext.tip.ToolTip', {
-            target: view.getComponent('infoForm').items.getAt(1).getTrigger('clipboard').getEl(),
+            target: view.getComponent('infoForm').items.getAt(1).getTrigger('hint').getEl(),
+            html: 'Отчисление в размере 5% от платежей ваших рефералов.<br />Для вывода бонусов следует обратиться в поддержку.'
+        });
+
+        Ext.create('Ext.tip.ToolTip', {
+            target: view.getComponent('infoForm').items.getAt(2).getTrigger('clipboard').getEl(),
             hideDelay: 500,
-            id: 'clipboard',
+            id: 'clipboardKey',
             listeners: {
                 beforeshow: function updateTip(tip) {
                     tip.update('Копировать в буфер.');
@@ -42,7 +47,7 @@ Ext.define('Admin.view.profile.ProfileController', {
         });
 
         Ext.create('Ext.tip.ToolTip', {
-            target: view.getComponent('infoForm').items.getAt(1).getTrigger('hint').getEl(),
+            target: view.getComponent('infoForm').items.getAt(2).getTrigger('hint').getEl(),
             html: [
                 'Ключ используется для осуществлении доступа без привязки к IP.',
                 'Для использования ключа,',
@@ -51,6 +56,18 @@ Ext.define('Admin.view.profile.ProfileController', {
             ].join(' '),
             hideDelay: 500
         });
+
+        Ext.create('Ext.tip.ToolTip', {
+            target: view.getComponent('infoForm').items.getAt(3).getTrigger('clipboard').getEl(),
+            hideDelay: 500,
+            id: 'clipboardRef',
+            listeners: {
+                beforeshow: function updateTip(tip) {
+                    tip.update('Копировать в буфер.');
+                }
+            }
+        });
+
 
         if (profileStore.isLoaded()) {
             return;
@@ -125,7 +142,22 @@ Ext.define('Admin.view.profile.ProfileController', {
         field.focus().selectText();
         try {
             var successful  = document.execCommand('copy'),
-                tips        = Ext.getCmp('clipboard');
+                tips        = Ext.getCmp('clipboardKey');
+
+            if (successful) {
+                tips.show(10, 10);
+                tips.update('Скопировано!');
+            }
+        } catch (err) {
+            console.info('Cope failed');
+        }
+    },
+
+    copyRef: function (field) {
+        field.focus().selectText();
+        try {
+            var successful  = document.execCommand('copy'),
+                tips        = Ext.getCmp('clipboardRef');
 
             if (successful) {
                 tips.show(10, 10);

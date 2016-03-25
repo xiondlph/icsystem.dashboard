@@ -13,7 +13,7 @@ Ext.define('Admin.view.payment.PaymentController', {
     boxready: function (view) {
         var profileStore = Ext.data.StoreManager.lookup('Profile');
         if (profileStore.isLoaded()) {
-            view.getComponent('payForm').getForm().baseParams.label = profileStore.getAt(0).get('email');
+            view.getComponent('payForm').getForm().baseParams.label = profileStore.getAt(0).get('id');
             return;
         }
 
@@ -22,7 +22,7 @@ Ext.define('Admin.view.payment.PaymentController', {
 
     profileLoad: function (store, records, successful, operation) {
         this.getView().getComponent('payForm').setLoading(false);
-        this.getView().getComponent('payForm').getForm().baseParams.label = store.getAt(0).get('email');
+        this.getView().getComponent('payForm').getForm().baseParams.label = store.getAt(0).get('id');
     },
 
     payFormSubmit: function (btn) {

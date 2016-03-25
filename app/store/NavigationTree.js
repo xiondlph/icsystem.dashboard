@@ -17,6 +17,12 @@ Ext.define('Admin.store.NavigationTree', {
             iconCls: 'x-fa fa-credit-card',
             routeId: 'payment'
         }, {
+            text:   'Рефералы',
+            view:   'referrals.Referrals',
+            leaf:   true,
+            iconCls: 'x-fa fa-users',
+            routeId: 'referrals'
+        }, {
             text:   'Помощь',
             view:   'pages.BlankPage',
             leaf:   true,

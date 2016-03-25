@@ -1,4 +1,3 @@
-
 Ext.define("Admin.view.payment.Payment",{
     extend: "Ext.container.Container",
 
@@ -55,7 +54,8 @@ Ext.define("Admin.view.payment.Payment",{
             'short-dest': 'ICSYSTEM - Оплата запросов',
             'quickpay-form': 'shop',
             'targets': 'ICSYSTEM - Оплата запросов',
-            'paymentType': 'PC'
+            'paymentType': 'PC',
+            'need-email': 'true'
         },
         items: [{
             xtype: 'displayfield',
@@ -67,7 +67,7 @@ Ext.define("Admin.view.payment.Payment",{
             fieldLabel: 'Сумма (руб.)',
             validateOnBlur: false,
             maxValue: 10000,
-            minValue: 10,
+            minValue: 1,
             value: 1000,
             name: 'sum'
         }],

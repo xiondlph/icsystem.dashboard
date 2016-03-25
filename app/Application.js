@@ -16,7 +16,8 @@ Ext.define('Admin.Application', {
     stores: [
         'NavigationTree',
         'Profile',
-        'Payments'
+        'Payments',
+        'Referrals'
     ],
     
     launch: function () {
